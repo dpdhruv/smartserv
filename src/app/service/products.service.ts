@@ -9,7 +9,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  url ="https://s3.ap-south-1.amazonaws.com/ss-local-files/products.json";
+  private url:string = "/assets/data/product.json";
 
   getProducts(){
     return this.http.get<any>(this.url);
