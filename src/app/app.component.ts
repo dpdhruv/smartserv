@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'smartserv';
 
   products=[];
-
+  loading=true;
   constructor(private service:ProductsService){
     this.getData();
   }
@@ -21,8 +21,10 @@ export class AppComponent {
       this.products.sort(function(a,b){
         return a.popularity-b.popularity
       }).reverse()
+      this.loading = false;
     },err=>{
       alert("Opps , Something went wrong.");
+      this.loading = false;
     })
   }
 }

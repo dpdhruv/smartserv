@@ -1,5 +1,4 @@
 <div class="container">
-  {{products.count}}
   <table class="table">
     <thead>
       <tr>
@@ -16,5 +15,10 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="loading" class="loader">
+ <div class="loading-text">
+  <h4 class="text-center">Loading...</h4>
+ </div>
 </div>
 <router-outlet></router-outlet>
