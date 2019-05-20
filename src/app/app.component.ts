@@ -29,14 +29,17 @@ export class AppComponent {
        this.searching = false;
      } else{
        this.searching = true;
+        var words = this.search.split(" ");
        this.filtered = this.products.filter(product=>{
-       if(product.title.toLowerCase().match(this.search.toLowerCase())){
-        console.log(product.title+" "+"matched with"+" "+this.search.toLowerCase())
-         return product
-       }else{
-        console.log(product.title+" "+"not matched"+" "+this.search.toLowerCase())
-         console.log("None");
-       }
+         for(let i=0;i<words.length;i++){
+           if (product.title.toLowerCase().match(words[i].toLowerCase())) {
+             console.log(product.title + " " + "matched with" + " " + this.search.toLowerCase())
+             return product
+           } else {
+             console.log(product.title + " " + "not matched" + " " + this.search.toLowerCase())
+             console.log("None");
+           }
+         }
      })
    }
      console.log(this.filtered);
