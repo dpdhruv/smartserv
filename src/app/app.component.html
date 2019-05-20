@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="pt-5 pb-5">
+    <input [(ngModel)]="search" (keyup)="searchProduct()">
+  </div>
+
+
   <table class="table">
     <thead>
       <tr>
@@ -7,14 +12,23 @@
         <th>Price</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="!searching">
       <tr *ngFor="let product of products;let rank=index;">
         <td>{{rank+1}} -- ({{product.popularity}})</td>
         <td>{{product.title}}</td>
         <td>{{product.price}}</td>
       </tr>
     </tbody>
+    <tbody *ngIf="searching">
+      <tr *ngFor="let product of filtered;let rank=index;">
+        <td>{{rank+1}} -- ({{product.popularity}})</td>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </tbody>
   </table>
+
+
 </div>
 <div *ngIf="loading" class="loader">
  <div class="loading-text">

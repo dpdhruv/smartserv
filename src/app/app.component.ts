@@ -10,9 +10,36 @@ export class AppComponent {
   title = 'smartserv';
 
   products=[];
+
+  filtered=[];
+
+  search='';
+
+  searching=false;
+
   loading=true;
   constructor(private service:ProductsService){
     this.getData();
+  }
+
+
+  searchProduct(){
+
+     if(this.search===''){
+       this.searching = false;
+     } else{
+       this.searching = true;
+       this.filtered = this.products.filter(product=>{
+       if(product.title.toLowerCase().match(this.search.toLowerCase())){
+        console.log(product.title+" "+"matched with"+" "+this.search.toLowerCase())
+         return product
+       }else{
+        console.log(product.title+" "+"not matched"+" "+this.search.toLowerCase())
+         console.log("None");
+       }
+     })
+   }
+     console.log(this.filtered);
   }
 
   getData(){
